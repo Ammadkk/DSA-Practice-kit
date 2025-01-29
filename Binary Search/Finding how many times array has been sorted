@@ -1,0 +1,45 @@
+class Solution {
+    public int findKRotation(List<Integer> arr) {
+        int low=0, high=arr.size() -1;
+        int index = -1;
+        int ans = Integer.MAX_VALUE;
+
+        while(low<=high){
+            int mid = (low+high)/2;
+            
+            if (arr.get(low) <= arr.get(high)){
+                if (arr.get(low) < ans){
+                    index = low;
+                    ans = arr.get(low);
+                }
+                break;
+            }
+            //left part is sorted
+            if (arr.get(low) <= arr.get(mid)){
+                if (arr.get(low) < ans){
+                    index = low;
+                    ans = arr.get(low);
+                }
+                
+                low = mid+1;
+                
+            //right part is sorted
+            
+            }else{
+                if (arr.get(mid) < ans){
+                    index = mid;
+                    ans = arr.get(mid);
+                }
+                high = mid-1;
+            }
+        }
+        return index;
+        
+    }
+    public static void main(String[] args){
+        List<Integer> arr =List.of(5,1,2,3,4);
+        Solution solution = new Solution();
+        int ans = solution.findKRotation(arr);
+        System.out.println("The minimum element is: " + ans );
+    }
+}
