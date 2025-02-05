@@ -1,0 +1,30 @@
+class Solution {
+    public static int getSecondLargest(int[] arr) {
+        int large= Integer.MIN_VALUE;
+        int secLarge= Integer.MIN_VALUE;
+        int n=arr.length;
+        
+        if (n<2){
+            return -1;
+        }
+        
+        for (int i=0; i<n; i++){
+            if (arr[i] > large){
+                secLarge = large;
+                large = arr[i];
+                
+            }else if (arr[i] > secLarge && arr[i] != large){
+                secLarge = arr[i];
+                
+            }
+        }
+        return secLarge == Integer.MIN_VALUE ? -1: secLarge;
+    }
+    
+    public static void main(String[] main){
+        int[] arr= {12, 35, 1, 10, 34, 1};
+        int ans= getSecondLargest(arr);
+        System.out.println("The second largest no is: " + ans);
+        
+    }
+}
