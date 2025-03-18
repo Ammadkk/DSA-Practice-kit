@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Solution {
+    public void moveZeroes(int[] nums){
+        int n=nums.length;
+        ArrayList<Integer> temp = new ArrayList<>();
+
+        //copy non zero elements into temp
+        for(int i=0; i<n; i++){
+            if (nums[i] != 0){
+                temp.add(nums[i]);
+            }
+        }
+
+        //for counting 
+        int nz= temp.size();
+
+        //put nz elements in nums starting
+        for(int i=0; i<nz; i++){
+            nums[i] = temp.get(i);
+        }
+
+        //put remaining 0 in the end
+        for (int i=nz; i<n; i++){
+            nums[i] = 0;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 0, 2, 3, 2, 0, 0, 4, 5, 1};
+        
+        new Solution().moveZeroes(nums); 
+        
+        System.out.println(Arrays.toString(nums)); 
+    }
+}
