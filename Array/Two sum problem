@@ -1,0 +1,30 @@
+class Solution {
+    public static int[] twoSum(int[] nums, int target) {
+        int n= nums.length;
+        int[] ans=new int[2];
+        ans[0] = ans[1] = -1;
+
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        for (int i=0; i < n; i++){
+            int value = nums[i];
+            int moreNeeded= target - value;
+            if (mpp.containsKey(moreNeeded)){
+                ans[0] = mpp.get(moreNeeded);
+                ans[1] = i;
+                return ans;
+            }
+            mpp.put(nums[i],i);
+        }
+        return ans;
+
+    }
+
+    public static void main(String[] args){
+        int[] nums={2,7,11,15};
+        int n=4;
+        int target=9;
+        int[] ans= twoSum(nums,target);
+        System.out.println("This is the answer for variant 2: [" + ans[0] + ", "
+                           + ans[1] + "]");
+    }
+}
