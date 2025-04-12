@@ -1,0 +1,13 @@
+private static Node removeHead(Node head){
+		if (head==null){
+			return head;
+		}
+		head = head.next;
+		return head;
+	}
+
+	public static void main(String[] args){
+		int[] arr = {10,14,55,66,23};
+		Node head = constructLL(arr);
+		head = removeHead(head);
+		print(head);
