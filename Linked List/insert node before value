@@ -1,0 +1,21 @@
+ private static Node insertBeforeVal(Node head, int el, int val) {
+        if (head == null) {
+            return null;
+        }
+        if (head.data == val){
+            Node temp = new Node(el,head);
+            return temp;
+        }
+        Node temp= head;
+
+        while (temp.next != null){
+            if (temp.next.data == val){
+                Node n = new Node(el);
+                n.next = temp.next;
+                temp.next = n;
+                break;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
