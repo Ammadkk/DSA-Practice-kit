@@ -1,0 +1,29 @@
+private static Node insertK(Node head, int el, int k) {
+        //insert a (only)node if list is empty
+        if (head == null) {
+            if (k == 1) {
+                return new Node(el);
+            } else {
+                return head;
+            }
+        }
+        //insert a head in non-empty list
+        if (k==1){
+            Node temp = new Node(el,head);
+            return temp;
+        }
+        Node temp= head;
+        int cnt = 0;
+
+        while (temp != null){
+            cnt++;
+            if (cnt == k-1){
+                Node n = new Node(el);
+                n.next = temp.next;
+                temp.next = n;
+                break;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
