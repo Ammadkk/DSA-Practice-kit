@@ -1,0 +1,24 @@
+ private static Node removeK(Node head, int k) {
+        if (head == null) {
+            return head;
+        }
+
+        if (k == 1) {
+//            Node temp = head;
+            return head;
+        }
+        int cnt = 0;
+        Node prev = null;
+        Node temp = head;
+
+        while (temp != null) {
+            cnt++;
+            if (cnt == k) {
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
